@@ -1,0 +1,106 @@
+><!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escolhas da Bárbara</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            margin-top: 40px;
+        }
+        
+        img {
+            width: 400px;
+            max-width: 90%;
+        }
+        
+        h1 {
+            color: #1e4fb1;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        
+        select {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        
+        .mensagem {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .erro {
+            color: red;
+        }
+        
+        .loading {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="WhatsApp Image 2026-03-06 at 22.45.04.jpeg">
+        
+        <h1>Escolhas da Bárbara</h1>
+        
+        <p>Selecione UMA DAS OPÇÕES</p>
+        
+        <select id="filmes">
+            <option value="">Escolha Um Filme</option>
+            <option value="Madagascar">Madagascar</option>
+            <option value="Homem-Aranha">Homem-Aranha</option>
+            <option value="Barbie">Barbie</option>
+            <option value="Fuga Das galinhas">Fuga das Galinhas</option>
+            <option value="Rei Leão">Rei Leão</option>
+        </select>
+        
+        <div id="mensagem" class="mensagem"></div>
+    </div>
+
+    <script>
+        const select = document.getElementById("filmes");
+        const mensagem = document.getElementById("mensagem");
+
+        const respostas = {
+            "Madagascar": "GOAT, para ficar melhor tinha que gostar de Kung Fu Panda",
+            "Homem-Aranha": "Só gosta desse filme, pq eu gosto",
+            "Barbie": "Tem um guarda roupa igualzinho",
+            "Fuga Das galinhas": "Só gosta desse filme, para colocar o nome das galinhas nas outras pessoas e elas não percebem",
+            "Rei Leão": "Esse é obrigação gostar"
+        };
+
+        select.addEventListener("change", function() {
+            if (select.value === "") {
+                mensagem.innerText = "";
+                mensagem.className = "mensagem";
+                return;
+            }
+
+            mensagem.className = "mensagem loading";
+            mensagem.innerText = "Carregando Escolhas da Bárbara...";
+
+            setTimeout(() => {
+                const resposta = respostas[select.value] || "Desculpe, filme não cadastrado.";
+                mensagem.className = "mensagem erro";
+                mensagem.innerText = resposta;
+            }, 2000);
+        });
+
+        console.log("Ela Ama o Ex (O Gustavo)")
+    </script>
+</body>
+</html>
